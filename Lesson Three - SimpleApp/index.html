@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome!</title>
+</head>
+<body>
+    <h3>Welcome to your first flask app!</h3>
+    <ul id="list"></ul>
+    <script>
+        // First we use document.getElementById to grab our list
+        var list = document.getElementById("list");
+        // Next, we use fetch to pull data from our names endpoing
+        fetch("/api/names")
+            // We then use a tool called a closure to convert our data into a json object
+            .then(d => d.json())
+            // Next we use a long-form closure to convert the json object into page data
+            .then(json => {
+                // Here we use something called a for-each loop that allows us to perform an action on each name in our list
+                json.names.forEach(name => {
+                    // We use document.createElement to create a new HTML list item object
+                    var child = document.createElement("li");
+                    // We set the text content of the object to the value of the name
+                    child.textContent = name;
+                    // Lastly, we append the list item object to our original list object
+                    list.appendChild(child);
+                });
+            });
+    </script>
+</body>
+</html>
