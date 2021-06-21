@@ -1,5 +1,9 @@
+# These are our imports! They help us avoid writing boring low-level code
 from flask import Flask, Response
 import json
+
+# Here we create our app object so that we have somewhere
+# to place all our pages and endpoints
 app = Flask(__name__)
 
 # Our very first endpoint/page: A simple hello world
@@ -18,4 +22,6 @@ def index():
     # Finally, we return our response.
     return resp
 
-app.run()
+# Here's where we start our little web server!
+if __name__ == '__main__':
+    app.run()

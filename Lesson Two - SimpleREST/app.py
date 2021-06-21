@@ -43,4 +43,5 @@ def names():
     return resp
 
 # Here's where we start our little web server!
-app.run()
+if __name__ == '__main__':
+    app.run()
